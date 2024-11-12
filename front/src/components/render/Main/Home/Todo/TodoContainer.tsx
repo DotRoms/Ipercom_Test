@@ -1,6 +1,6 @@
-import { Container } from "../../../UI/design-system/container/Container";
-import { TodoCardLogic } from "../../../logic/Main/Home/TodoCard-logic";
-import { TodoFormLogic } from "../../../logic/Main/Home/TodoForm-logic";
+import { Container } from "../../../../UI/design-system/container/Container";
+import { TodoCardLogic } from "../../../../logic/Main/Home/Toto/TodoCard-logic";
+import { TodoFormLogic } from "../../../../logic/Main/Home/Toto/TodoForm-logic";
 
 interface TodoItemProps {
     id: string;

@@ -1,5 +1,5 @@
-import { deleteTask, updateTask } from '../../../../actions/TaskCrud';
-import { TodoCard } from '../../../render/Main/Home/TodoCard';
+import { deleteTask, updateTask } from '../../../../../actions/TaskCrud';
+import { TodoCard } from '../../../../render/Main/Home/Todo/TodoCard';
 
 interface TodoProps {
     id: string;

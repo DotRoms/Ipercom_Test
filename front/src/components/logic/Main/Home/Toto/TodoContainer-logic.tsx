@@ -1,5 +1,5 @@
-import { useFetchTodoList } from "../../../../hook/useFetchTodoList"
-import { TodoContainer } from "../../../render/Main/Home/TodoContainer"
+import { useFetchTodoList } from "../../../../../hook/useFetchTodoList"
+import { TodoContainer } from "../../../../render/Main/Home/Todo/TodoContainer"
 
 export const TodoContainerLogic = () => {
 

@@ -1,5 +1,5 @@
-import { useSubmitNewTask } from "../../../../hook/useSubmitNewTask";
-import { TodoForm } from "../../../render/Main/Home/TodoForm";
+import { useSubmitNewTask } from "../../../../../hook/useSubmitNewTask";
+import { TodoForm } from "../../../../render/Main/Home/Todo/TodoForm";
 
 interface TodoItemProps {
     id: string;

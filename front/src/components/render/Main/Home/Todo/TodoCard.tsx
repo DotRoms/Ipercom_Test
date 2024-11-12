@@ -1,4 +1,4 @@
-import { DeleteIcon } from "../../../UI/design-system/Icons/Icons";
+import { DeleteIcon } from "../../../../UI/design-system/Icons/Icons";
 
 interface TodoItemProps {
     id: string;
