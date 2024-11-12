@@ -16,6 +16,7 @@ export const AuthModal = ({
     setUserNeedLogin,
     setUserNeedSignup,
 }: AuthModalProps) => {
+    
     return (
         <div className="flex items-center text-white justify-center fixed inset-0 z-50 p-6 bg-secondary bg-opacity-50">
             <div className="flex flex-col fixed z-50 p-4 border border-primary bg-secondary shadow-xl w-[94%] sm:w-[580px] max-h-[94%] rounded-lg">

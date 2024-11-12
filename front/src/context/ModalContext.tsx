@@ -1,5 +1,3 @@
-"use client";
-
 import { useSelectModal } from "../hook/useSelectModal";
 
 interface AuthModalContextProps {

@@ -5,6 +5,7 @@ interface SignupFormProps {
     handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     formData: FormData;
     errorMessages: string[];
+    successMessages?: string | null | undefined;
 }
 
 type FormData = {
@@ -19,8 +20,9 @@ export const SignupForm = ({
     handleChange,
     formData,
     errorMessages,
+    successMessages,
 }: SignupFormProps) => {
-
+    
     return (
         <form
             onSubmit={handleSubmit}
@@ -36,7 +38,6 @@ export const SignupForm = ({
                     onChange={handleChange}
                     value={formData.name}
                     name="name"
-                    id="name"
                 />
             </div>
 
@@ -48,8 +49,7 @@ export const SignupForm = ({
                     className="rounded-lg p-2 border border-primary text-black"
                     onChange={handleChange}
                     value={formData.email}
-                      name="email"
-                    id="email"
+                    name="email"
                 />
             </div>
 
@@ -61,8 +61,7 @@ export const SignupForm = ({
                     className="rounded-lg p-2 border border-primary text-black"
                     onChange={handleChange}
                     value={formData.password}
-                      name="password"
-                    id="password"
+                    name="password"
                 />
             </div>
             <div className="flex flex-col gap-2">
@@ -73,16 +72,20 @@ export const SignupForm = ({
                     className="rounded-lg p-2 border border-primary text-black"
                     onChange={handleChange}
                     value={formData.confirmPassword}
-                      name="confirmPassword"
-                    id="confirmPassword"
+                    name="confirmPassword"
                 />
             </div>
             <div>
-                {errorMessages[0] &&
-                    <p  className="text-red-500 text-xs text-center">
-                        {errorMessages[0] }
+                {errorMessages[0] && (
+                    <p className="text-red-500 text-xs text-center">
+                        {errorMessages[0]}
                     </p>
-                }
+                )}
+                {successMessages && (
+                    <p className="text-green-500 text-xs text-center">
+                        {successMessages}
+                    </p>
+                )}
             </div>
             <Button type="submit" ariaLabel="Valider le formulaire">
                 Valider

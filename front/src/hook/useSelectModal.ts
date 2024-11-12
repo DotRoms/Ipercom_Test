@@ -8,7 +8,6 @@ export const useSelectModal = () => {
     const handleClickOnCloseIcon = () => {
         setOpenModal(false);
     }
-
     return {
         openModal,
         setOpenModal,

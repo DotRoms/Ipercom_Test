@@ -1,24 +1,23 @@
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import { Footer } from './components/render/Footer/Footer';
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Footer } from "./components/render/Footer/Footer";
 import { Header } from "./components/render/Header/Index";
-import { AuthModalProvider } from './context/ModalContext';
-import { HomePage } from './pages/HomePage';
+import { AuthModalProvider } from "./context/ModalContext";
+import { AuthProvider } from "./context/userIsConnected";
+import { HomePage } from "./pages/HomePage";
 function App() {
-
     return (
-      <AuthModalProvider>
+        <AuthProvider>
+            <AuthModalProvider>
+                <Router>
+                    <Header />
 
-      <Router>
-      <Header />
-      
-      <Routes>
-        
-        <Route path="/" element={<HomePage />} />
-  
-      </Routes>
-      <Footer />
-    </Router>
-      </AuthModalProvider>
+                    <Routes>
+                        <Route path="/" element={<HomePage />} />
+                    </Routes>
+                    <Footer />
+                </Router>
+            </AuthModalProvider>
+        </AuthProvider>
     );
 }
 

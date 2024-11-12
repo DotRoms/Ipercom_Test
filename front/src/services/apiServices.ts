@@ -1,5 +1,5 @@
 export class ApiService {
-    static apiBase: string = 'http://localhost:3000';
+    static apiBase: string = 'http://localhost:5142/api';
 
     // GET method
     static async get(path: string) {
@@ -30,6 +30,7 @@ export class ApiService {
                 const errorData = await response.json();
                 throw new Error(errorData.message || 'An error occurred');
             }
+
             return response.json();
         } catch (error) {
             console.error("Failed to post data:", error);

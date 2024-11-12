@@ -1,14 +1,27 @@
 import { CallToActionLogic } from "../../../logic/Main/Home/CallToAction-logic";
+import { TodoContainerLogic } from "../../../logic/Main/Home/TodoContainer-logic";
 import { TitleAndSubtitle } from "./TitleAndSubtitle";
 
-export const Index = () => {
-  
+interface IndexProps {
+    userIsConnected: boolean;
+}
+
+export const Index = ({ userIsConnected }: IndexProps) => {
     return (
-        <main className="flex items-center justify-center m--auto min-h-[calc(100vh-200px)] ">
-            <section className="">
-            <TitleAndSubtitle />
-            <CallToActionLogic />
+        <main className="flex flex-col items-center justify-center m--auto min-h-[calc(100vh-200px)] ">
+            <section>
+                <TitleAndSubtitle />
             </section>
+
+            {userIsConnected ? (
+                <section>
+                    <TodoContainerLogic />
+                </section>
+            ) : (
+                <section>
+                    <CallToActionLogic />
+                </section>
+            )}
         </main>
     );
 };

@@ -1,6 +1,6 @@
-import { Index } from '../components/render/Main/Home/Index'
+import { IndexLogic } from '../components/logic/Main/Home/Index-logic'
 export const HomePage = () => {
     return (
-        <Index />
+        <IndexLogic />
     )
 }

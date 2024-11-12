@@ -1,6 +1,6 @@
 import { useAuthModal } from "../../../../context/ModalContext";
+import { useAuth } from "../../../../context/userIsConnected";
 import { NavigationBar } from "../../../render/Header/Navigation/NavigationBar";
-
 export const NavigationBarLogic = () => {
     const {
         openModal,
@@ -11,6 +11,7 @@ export const NavigationBarLogic = () => {
         setOpenModal,
     } = useAuthModal();
 
+    const {userIsConnected, handleDisconnectUser} = useAuth();
     return (
         <NavigationBar
             openModal={openModal}
@@ -19,6 +20,8 @@ export const NavigationBarLogic = () => {
             setOpenModal={setOpenModal}
             setUserNeedLogin={setUserNeedLogin}
             setUserNeedSignup={setUserNeedSignup}
+            userIsConnected={userIsConnected}
+            handleDisconnectUser={handleDisconnectUser}
         />
     );
 };

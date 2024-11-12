@@ -15,6 +15,8 @@ interface NavigationBarProps {
     openModal: boolean;
     userNeedLogin: boolean;
     userNeedSignup: boolean;
+    userIsConnected: boolean;
+    handleDisconnectUser: () => void;
 }
 
 export const NavigationBar = ({
@@ -24,8 +26,9 @@ export const NavigationBar = ({
     openModal,
     userNeedLogin,
     userNeedSignup,
+    userIsConnected,
+    handleDisconnectUser,
 }: NavigationBarProps) => {
-    
     return (
         <nav className="bg-secondary text-white mb-8">
             <Container className="flex flex-col sm:flex-row justify-between items-center m-auto gap-4">
@@ -36,43 +39,57 @@ export const NavigationBar = ({
                 </div>
 
                 <ul className="flex items-center gap-4 text-sm">
-                    {NavLinks.map((link: NavLinkProps, index: number) => (
-                        <li key={index}>
-                            {link.name === "Connexion" ? (
-                                <Button
-                                    ariaLabel="Ouvrir la modal de connexion"
-                                    size="sm"
-                                    onClick={() => {
-                                        setOpenModal(true);
-                                        setUserNeedLogin(true);
-                                        setUserNeedSignup(false);
-                                    }}
-                                >
-                                    {link.name}
-                                </Button>
-                            ) : link.name === "Inscription" ? (
-                                <Button
-                                    ariaLabel="Ouvrir la modal d'inscription"
-                                    size="sm"
-                                    variant="tertiary"
-                                    onClick={() => {
-                                        setOpenModal(true);
-                                        setUserNeedLogin(false);
-                                        setUserNeedSignup(true);
-                                    }}
-                                >
-                                    {link.name}
-                                </Button>
-                            ) : (
-                                <a
-                                    className="p-2 rounded-lg hover:text-primary"
-                                    href={link.url}
-                                >
-                                    {link.name}
-                                </a>
-                            )}
-                        </li>
-                    ))}
+                    <li>
+                        <a
+                            className="p-2 rounded-lg hover:text-primary"
+                            href={"/"}
+                        >
+                            Accueil
+                        </a>
+                    </li>
+                    {userIsConnected ? (
+                        <Button
+                            ariaLabel="Ouvrir la modal d'inscription"
+                            size="sm"
+                            variant="danger"
+                            onClick={handleDisconnectUser}
+                        >
+                            Déconnexion
+                        </Button>
+                    ) : (
+                        NavLinks.map((link: NavLinkProps, index: number) => (
+                            <li key={index}>
+                                {link.name === "Connexion" ? (
+                                    <Button
+                                        ariaLabel="Ouvrir la modal de connexion"
+                                        size="sm"
+                                        onClick={() => {
+                                            setOpenModal(true);
+                                            setUserNeedLogin(true);
+                                            setUserNeedSignup(false);
+                                        }}
+                                    >
+                                        {link.name}
+                                    </Button>
+                                ) : (
+                                    link.name === "Inscription" && (
+                                        <Button
+                                            ariaLabel="Ouvrir la modal d'inscription"
+                                            size="sm"
+                                            variant="tertiary"
+                                            onClick={() => {
+                                                setOpenModal(true);
+                                                setUserNeedLogin(false);
+                                                setUserNeedSignup(true);
+                                            }}
+                                        >
+                                            {link.name}
+                                        </Button>
+                                    )
+                                )}
+                            </li>
+                        ))
+                    )}
                 </ul>
             </Container>
 

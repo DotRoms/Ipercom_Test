@@ -1,10 +1,25 @@
 import { Button } from "../../../UI/design-system/button/Button";
 
-interface LoginFormProps {
+interface LoginpFormProps {
     handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    formData: FormData;
+    errorMessages: string[];
+    successMessages?: string | null | undefined;
 }
 
-export const LoginForm = ({handleSubmit}:LoginFormProps ) => {
+type FormData = {
+    email: string;
+    password: string;
+};
+
+export const LoginForm = ({
+    handleChange,
+    formData,
+    handleSubmit,
+    errorMessages,
+    successMessages,
+}: LoginpFormProps) => {
     return (
         <form
             action="POST"
@@ -17,6 +32,9 @@ export const LoginForm = ({handleSubmit}:LoginFormProps ) => {
                     type="email"
                     required
                     className="rounded-lg p-2 border border-primary text-black"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                 />
             </div>
 
@@ -26,10 +44,27 @@ export const LoginForm = ({handleSubmit}:LoginFormProps ) => {
                     type="password"
                     required
                     className="rounded-lg p-2 border border-primary text-black"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
                 />
             </div>
+            <div>
+                {errorMessages[0] && (
+                    <p className="text-red-500 text-sm text-center">
+                        {errorMessages[0]}
+                    </p>
+                )}
+                {successMessages && (
+                    <p className="text-green-500 text-sm text-center">
+                        {successMessages}
+                    </p>
+                )}
+            </div>
 
-            <Button type="submit" ariaLabel="Valider le formulaire">Valider</Button>
+            <Button type="submit" ariaLabel="Valider le formulaire">
+                Valider
+            </Button>
         </form>
     );
 };
