@@ -1,5 +1,7 @@
+import "dotenv/config";
+
 export class ApiService {
-    static apiBase: string = 'http://localhost:5142/api';
+    static apiBase: string = process.env.API_BASE || 'http://localhost:5142/api';
 
     // GET method
     static async get(path: string) {

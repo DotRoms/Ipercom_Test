@@ -1,6 +1,5 @@
-import { IndexLogic } from '../components/logic/Main/Home/Index-logic'
+import { IndexLogic } from "../components/logic/Main/Home/Index-logic";
+
 export const HomePage = () => {
-    return (
-        <IndexLogic />
-    )
-}
+    return <IndexLogic />;
+};
