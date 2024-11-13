@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MonProjetAPI_CRUD.Models;
 using MonProjetAPI.Models;
 using MonProjetAPI.Data;
 using System.IdentityModel.Tokens.Jwt;
@@ -7,8 +8,7 @@ using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using BCrypt.Net;
-
-namespace MonProjetAPI.Controllers
+namespace MonProjetAPI_CRUD.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

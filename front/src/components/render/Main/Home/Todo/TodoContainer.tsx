@@ -3,16 +3,17 @@ import { Container } from "../../../../UI/design-system/container/Container";
 import { TodoCardLogic } from "../../../../logic/Main/Home/Toto/TodoCard-logic";
 import { TodoFormLogic } from "../../../../logic/Main/Home/Toto/TodoForm-logic";
 
-interface TodoItemProps {
-    id: string;
+type TodoItemProps = {
+    id: number;
     title: string;
     completed: boolean;
 }
+
 interface TodoContainerProps {
     todoList: TodoItemProps[];
     error: string | null;
     loading: boolean;
-    setTodoList: (todos: TodoItemProps[]) => void;
+    setTodoList: React.Dispatch<React.SetStateAction<TodoItemProps[]>>;
 }
 
 // TodoContainer render component
@@ -44,15 +45,13 @@ export const TodoContainer = ({
         <Container>
             <h3 className="text-center mb-8 text-2xl">Ma liste de tâches.</h3>
 
-            <TodoFormLogic todoList={todoList} setTodoList={setTodoList} />
+            <TodoFormLogic setTodoList={setTodoList}/>
 
             <div className="flex flex-col w-full">
                 {todoList.map((todo: TodoItemProps, index: number) => (
                     <TodoCardLogic
                         key={index}
-                        todoList={todoList}
                         todo={todo}
-                        setTodoList={setTodoList}
                     />
                 ))}
             </div>

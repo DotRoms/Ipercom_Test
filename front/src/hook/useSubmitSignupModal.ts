@@ -1,6 +1,9 @@
 import { useState } from "react";
+
 import { ControlInputValueOnSubmitSignupForm } from "../actions/ControlSubmitForm";
+
 import { ApiService } from "../services/apiServices";
+
 
 export const useSignupModal = () => {
     const [errorMessages, setErrorMessages] = useState<string[]>([]);
@@ -13,6 +16,8 @@ export const useSignupModal = () => {
         password: "",
         confirmPassword: "",
     });
+
+
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({

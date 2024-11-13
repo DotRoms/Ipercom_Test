@@ -1,11 +1,11 @@
 import { DeleteIcon } from "../../../../UI/design-system/Icons/Icons";
 
 interface TodoItemProps {
-    id: string;
+    id: number;
     title: string;
     completed: boolean;
-    onToggle: (id: string) => void;
-    handleDeleteTask: (id: string) => void;
+    // onToggle: (id: string) => void;
+    // handleDeleteTask: (id: string) => void;
 }
 
 // TodoCard render component
@@ -14,17 +14,17 @@ export const TodoCard = ({
     id,
     title,
     completed,
-    onToggle,
-    handleDeleteTask,
+    // onToggle,
+    // handleDeleteTask,
 }: TodoItemProps) => {
 
     return (
         <div className="w-full flex justify-center gap-4 items-center p-4 bg-white shadow-md rounded-lg mb-4">
             <input
                 type="checkbox"
-                id={id}
+                id={`${id}`}
                 checked={completed}
-                onChange={() => onToggle(id)}
+                // onChange={() => onToggle(id)}
             />
             <p
                 className={`flex-1 ${
@@ -35,7 +35,8 @@ export const TodoCard = ({
             </p>
 
             <div className="flex">
-                <button onClick={() => handleDeleteTask(id)}>
+                {/* <button onClick={() => handleDeleteTask(id)}> */}
+                <button>
                     <DeleteIcon size="25" color="red" />
                 </button>
             </div>

@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 
 // Define the User model
-namespace MonProjetAPI.Models
+namespace MonProjetAPI_CRUD.Models
 {
     public class SignupRequest
     {

@@ -9,6 +9,7 @@ interface TodoFormProps {
     handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     formData: FormData;
     errorMessages: string[];
+    successMessage: string;
 }
 
 // TodoForm render component
@@ -18,8 +19,8 @@ export const TodoForm = ({
     handleChange,
     formData,
     errorMessages,
+    successMessage,
 }: TodoFormProps) => {
-
     return (
         <div className="flex flex-col gap-2 border border-secondary p-4 rounded-lg mb-8">
             <form
@@ -42,6 +43,9 @@ export const TodoForm = ({
             <div className="text-sm text-center">
                 {errorMessages[0] && (
                     <p className="text-red-500">{errorMessages[0]}</p>
+                )}
+                {successMessage && (
+                    <p className="text-green-500">{successMessage}</p>
                 )}
             </div>
         </div>

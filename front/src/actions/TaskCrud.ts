@@ -53,29 +53,3 @@ export const deleteTask = (
 
     return { handleDeleteTask };
 };
-
-export const createTask = (
-    todoList: TodoItemProps[],
-    setTodoList: (todos: TodoItemProps[]) => void
-) => {
-    const addTask = (title: string) => {
-        const newTask = {
-            id: "", // Utilisation d'un ID temporaire
-            title,
-            completed: false,
-        };
-        setTodoList([...todoList, newTask]);
-
-        // try {
-        //     const createdTask = await ApiService.post(endpoint, { title, completed: false });
-        //     setTodoList(currentTodos => currentTodos.map(todo => 
-        //         todo.id === newTask.id ? { ...todo, id: createdTask.id } : todo
-        //     ));
-        // } catch (error) {
-        //     console.error("Error creating task in DB:", error);
-        //     setTodoList(todoList); // Annuler en cas d'erreur
-        // }
-    };
-
-    return { addTask };
-};

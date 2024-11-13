@@ -1,15 +1,15 @@
- using System;
+using System;
 using System.ComponentModel.DataAnnotations;
 
- namespace MonProjetAPI.Models
- {
- public class LoginRequest
+namespace MonProjetAPI_CRUD.Models
 {
-    [Required]
-    [EmailAddress]
-    public string Email { get; set; }
+    public class LoginRequest
+    {
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
 
-    [Required]
-    public string Password { get; set; }
+        [Required]
+        public string Password { get; set; }
+    }
 }
- }

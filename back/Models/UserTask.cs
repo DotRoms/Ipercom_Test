@@ -6,7 +6,7 @@ namespace MonProjetAPI.Models
 {
     public class UserTask
     {
-        public int? Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "Le titre doit contenir au maximum 80 caractères")]
@@ -18,10 +18,7 @@ namespace MonProjetAPI.Models
         [Required]
         public int UserId { get; set; }
 
-
-        public User User { get; set; }
-
-        public DateTime? CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
     }
 }
