@@ -11,6 +11,8 @@ interface TodoFormProps {
     errorMessages: string[];
 }
 
+// TodoForm render component
+// This component is used to render the form to add a new task
 export const TodoForm = ({
     handleSubmit,
     handleChange,
@@ -26,14 +28,14 @@ export const TodoForm = ({
                 onSubmit={handleSubmit}
             >
                 <div className="flex flex-col">
-                <input
-                    type="text"
-                    className="bg-slate-100 rounded-lg p-2"
-                    onChange={handleChange}
-                    value={formData.title}
-                    name="title"
-                    placeholder="Ajouter une tâche"
-                />
+                    <input
+                        type="text"
+                        className="bg-slate-100 rounded-lg p-2"
+                        onChange={handleChange}
+                        value={formData.title}
+                        name="title"
+                        placeholder="Ajouter une tâche"
+                    />
                 </div>
                 <Button type="submit">Ajouter</Button>
             </form>

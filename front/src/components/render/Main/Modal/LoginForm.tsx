@@ -13,6 +13,9 @@ type FormData = {
     password: string;
 };
 
+
+// LoginForm render component
+// This component is used to render the login form
 export const LoginForm = ({
     handleChange,
     formData,
@@ -20,6 +23,7 @@ export const LoginForm = ({
     errorMessages,
     successMessages,
 }: LoginpFormProps) => {
+
     return (
         <form
             action="POST"

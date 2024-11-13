@@ -1,5 +1,6 @@
 import { Button } from "../../../UI/design-system/button/Button";
 import { Container } from "../../../UI/design-system/container/Container";
+
 import { AuthModalLogic } from "../../../logic/Main/Modal/AuthLoginModal-logic";
 
 interface CallToActionProps {
@@ -11,6 +12,8 @@ interface CallToActionProps {
     userNeedSignup: boolean;
 }
 
+// CallToAction render component
+// This component is used to display a call to action for the user to login or signup
 export const CallToAction = ({
     openModal,
     userNeedLogin,

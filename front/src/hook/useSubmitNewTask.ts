@@ -8,6 +8,7 @@ interface TodoItemProps {
     completed: boolean;
 }
 
+// This function is used to submit a new task
 export const useSubmitNewTask = (
     todoList: TodoItemProps[],
     setTodoList: (todos: TodoItemProps[]) => void

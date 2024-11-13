@@ -1,7 +1,10 @@
 import { useAuthModal } from "../../../../context/ModalContext";
+
 import { AuthModal } from "../../../render/Main/Modal/AuthModale";
 
 export const AuthModalLogic = () => {
+
+    // useContext from ModalContext for handling the modal
     const {
         userNeedLogin,
         handleClickOnCloseIcon,

@@ -1,12 +1,25 @@
-import { LoginForm } from '../../../render/Main/Modal/LoginForm';
+import { LoginForm } from "../../../render/Main/Modal/LoginForm";
 
-import { useLoginModal } from '../../../../hook/useSubmitLoginModal';
+import { useLoginModal } from "../../../../hook/useSubmitLoginModal";
 
 export const LoginFormLogic = () => {
 
-    const { handleChange, formData, handleSubmit, errorMessages, successMessages } = useLoginModal();
+    // Destructuring const from useLoginModal hook for return them to the LoginForm component
+    const {
+        handleChange,
+        formData,
+        handleSubmit,
+        errorMessages,
+        successMessages,
+    } = useLoginModal();
 
     return (
-        <LoginForm handleSubmit={handleSubmit} handleChange={handleChange} formData={formData} errorMessages={errorMessages} successMessages={successMessages}/>
-    )
-}
+        <LoginForm
+            handleSubmit={handleSubmit}
+            handleChange={handleChange}
+            formData={formData}
+            errorMessages={errorMessages}
+            successMessages={successMessages}
+        />
+    );
+};

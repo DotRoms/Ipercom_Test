@@ -14,9 +14,13 @@ namespace MonProjetAPI.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+        // initialisation de la variable pour accéder a la base de données
         private readonly ApplicationDbContext _context;
+
+        // initialisation de la variable pour accéder a la configuration
         private readonly IConfiguration _configuration;
 
+        // Contructeur de la classe UserController
         public UserController(ApplicationDbContext context, IConfiguration configuration)
         {
             _context = context;
@@ -27,6 +31,9 @@ namespace MonProjetAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUser()
         {
+            // Utilisation de Entity Framework pour récupérer tous les utilisateurs
+            // _context.Users fait référence à la collection des utilisateurs dans la base de données
+            // ToListAsync() permet de récupérer cette collection sous forme de liste de manière asynchrone
             return await _context.Users.ToListAsync();
         }
 

@@ -1,5 +1,7 @@
 import { Container } from "../../../UI/design-system/container/Container";
 
+// TitleAndSubtitle render component
+// This component is used to display the title and subtitle of the application
 export const TitleAndSubtitle = () => {
     
     return (

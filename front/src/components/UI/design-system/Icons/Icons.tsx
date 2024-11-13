@@ -5,6 +5,8 @@ interface IconsProps {
     color: string;
 }
 
+// Design-system Icons component
+
 export const CloseIcon = ({ size, color }: IconsProps) => {
     return <RiCloseLargeLine size={size} color={color} />;
 };

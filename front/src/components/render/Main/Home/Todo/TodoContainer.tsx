@@ -1,4 +1,5 @@
 import { Container } from "../../../../UI/design-system/container/Container";
+
 import { TodoCardLogic } from "../../../../logic/Main/Home/Toto/TodoCard-logic";
 import { TodoFormLogic } from "../../../../logic/Main/Home/Toto/TodoForm-logic";
 
@@ -14,6 +15,8 @@ interface TodoContainerProps {
     setTodoList: (todos: TodoItemProps[]) => void;
 }
 
+// TodoContainer render component
+// This component is used to display the list of tasks
 export const TodoContainer = ({
     todoList,
     error,
@@ -41,11 +44,16 @@ export const TodoContainer = ({
         <Container>
             <h3 className="text-center mb-8 text-2xl">Ma liste de tâches.</h3>
 
-            <TodoFormLogic todoList={todoList} setTodoList={setTodoList}/>
+            <TodoFormLogic todoList={todoList} setTodoList={setTodoList} />
 
             <div className="flex flex-col w-full">
                 {todoList.map((todo: TodoItemProps, index: number) => (
-                    <TodoCardLogic key={index} todoList={todoList} todo={todo} setTodoList={setTodoList}/>
+                    <TodoCardLogic
+                        key={index}
+                        todoList={todoList}
+                        todo={todo}
+                        setTodoList={setTodoList}
+                    />
                 ))}
             </div>
         </Container>

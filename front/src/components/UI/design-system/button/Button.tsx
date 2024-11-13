@@ -31,6 +31,8 @@ const sizeStyles: { [key: string]: string } = {
     lg: "px-7 py-2 text-base rounded-lg",
 };
 
+
+// Design-system Button component
 export const Button = ({
     variant = "primary",
     size = "md",

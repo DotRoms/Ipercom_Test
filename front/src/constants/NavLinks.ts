@@ -1,3 +1,6 @@
+// Objective: export the links for the navigation bar
+// This is the links for application
+
 export const NavLinks = [
     {
         name: "Accueil",

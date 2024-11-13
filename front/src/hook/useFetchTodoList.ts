@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-// import { ApiService } from "../services/apiServices";
+
 import { task } from "../constants/fakeTask";
 interface Todo {
     id: string;
@@ -7,7 +7,9 @@ interface Todo {
     completed: boolean;
 }
 
+// This function is used to fetch the list of tasks
 export const useFetchTodoList = () => {
+
     const [todoList, setTodoList] = useState<Todo[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);

@@ -57,7 +57,6 @@ Project/
 │       ├── App.tsx                          # Central file of the application
 │       ├── main.tsx                         # Main entry point file
 │       ├── index.css                        # Tailwind CSS file
-│       ├── .env                             # Environment file
 │       ├── vite-env.d.ts                    # Vite environment file
 │       ├── .gitignore                       # Git ignore file
 │       ├── package-lock.json                # Package lock file

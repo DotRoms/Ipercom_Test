@@ -1,3 +1,5 @@
+import { createContext, ReactNode, useContext } from "react";
+
 import { useSelectModal } from "../hook/useSelectModal";
 
 interface AuthModalContextProps {
@@ -10,6 +12,13 @@ interface AuthModalContextProps {
     handleClickOnCloseIcon: () => void;
 }
 
+// Create the context for managing the authentication modal state.
+const AuthModalContext = createContext<AuthModalContextProps | undefined>(
+    undefined
+);
+
+// Custom hook to access the AuthModal context.
+// This hook will throw an error if it is used outside of an AuthModalProvider.
 export const useAuthModal = () => {
     const context = useContext(AuthModalContext);
     if (!context) {
@@ -20,13 +29,10 @@ export const useAuthModal = () => {
     return context;
 };
 
-import { createContext, ReactNode, useContext } from "react";
-const AuthModalContext = createContext<AuthModalContextProps | undefined>(
-    undefined
-);
-
-// Fournisseur de contexte
+// This component wraps the application to provide access to the context.
 export const AuthModalProvider = ({ children }: { children: ReactNode }) => {
+
+    // Using the useSelectModal hook to manage the modal state.
     const authModaleProps = useSelectModal();
 
     return (

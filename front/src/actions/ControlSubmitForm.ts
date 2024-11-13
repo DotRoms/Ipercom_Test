@@ -35,6 +35,7 @@ interface ControlInputValueOnSubmitLoginFormProps {
     setErrorMessages: (error: string[]) => void;
 }
 
+// This function is used to validate the data entered in the Signup form
 export const ControlInputValueOnSubmitSignupForm = async ({
     formData,
     setErrorMessages,
@@ -47,6 +48,7 @@ export const ControlInputValueOnSubmitSignupForm = async ({
     return result.data;
 };
 
+// This function is used to validate the data entered in the Login form
 export const ControlInputValueOnSubmitLoginForm = async ({
     formData,
     setErrorMessages,
@@ -59,6 +61,7 @@ export const ControlInputValueOnSubmitLoginForm = async ({
     return result.data;
 };
 
+// This function is used to validate the data entered in the Task form
 export const ControlInputValueOnSubmitTaskForm = async ({
     formData,
     setErrorMessages,

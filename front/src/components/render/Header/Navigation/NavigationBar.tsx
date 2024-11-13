@@ -1,6 +1,8 @@
 import { NavLinks } from "../../../../constants/NavLinks";
+
 import { Button } from "../../../UI/design-system/button/Button";
 import { Container } from "../../../UI/design-system/container/Container";
+
 import { AuthModalLogic } from "../../../logic/Main/Modal/AuthLoginModal-logic";
 
 interface NavLinkProps {
@@ -19,6 +21,7 @@ interface NavigationBarProps {
     handleDisconnectUser: () => void;
 }
 
+// NavigationBar render component
 export const NavigationBar = ({
     setOpenModal,
     setUserNeedLogin,
@@ -29,6 +32,7 @@ export const NavigationBar = ({
     userIsConnected,
     handleDisconnectUser,
 }: NavigationBarProps) => {
+
     return (
         <nav className="bg-secondary text-white mb-8">
             <Container className="flex flex-col sm:flex-row justify-between items-center m-auto gap-4">
@@ -95,6 +99,7 @@ export const NavigationBar = ({
 
             {openModal && userNeedLogin && <AuthModalLogic />}
             {openModal && userNeedSignup && <AuthModalLogic />}
+
         </nav>
     );
 };

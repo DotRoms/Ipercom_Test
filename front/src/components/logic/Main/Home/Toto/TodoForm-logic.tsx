@@ -1,4 +1,5 @@
 import { useSubmitNewTask } from "../../../../../hook/useSubmitNewTask";
+
 import { TodoForm } from "../../../../render/Main/Home/Todo/TodoForm";
 
 interface TodoItemProps {
@@ -8,17 +9,27 @@ interface TodoItemProps {
 }
 
 interface TodoFormLogicProps {
-    todoList: TodoItemProps[]; // Typage correct pour la liste de tâches
-    setTodoList: (todos: TodoItemProps[]) => void; // Typage pour la fonction de mise à jour de la liste
+    todoList: TodoItemProps[];
+    setTodoList: (todos: TodoItemProps[]) => void;
 }
 
+// TodoFormLogic logic component
+// This component is used to manage the logic of the TodoForm component
+export const TodoFormLogic = ({
+    todoList,
+    setTodoList,
+}: TodoFormLogicProps) => {
 
-export const TodoFormLogic = ({todoList, setTodoList}: TodoFormLogicProps) => {
-
-    // const {addTask} = createTask(setTodoList, todoList);
-    const {formData, handleChange, handleSubmit, errorMessages} = useSubmitNewTask(todoList, setTodoList);
+    // Destructuring const from useSubmitNewTask hook for return them to the TodoForm component
+    const { formData, handleChange, handleSubmit, errorMessages } =
+        useSubmitNewTask(todoList, setTodoList);
 
     return (
-        <TodoForm formData={formData} handleChange={handleChange} handleSubmit={handleSubmit} errorMessages={errorMessages}/>
-    )
-}
+        <TodoForm
+            formData={formData}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            errorMessages={errorMessages}
+        />
+    );
+};

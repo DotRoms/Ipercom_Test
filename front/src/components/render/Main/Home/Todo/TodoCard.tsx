@@ -8,6 +8,8 @@ interface TodoItemProps {
     handleDeleteTask: (id: string) => void;
 }
 
+// TodoCard render component
+// This component is used to display a task
 export const TodoCard = ({
     id,
     title,
@@ -15,6 +17,7 @@ export const TodoCard = ({
     onToggle,
     handleDeleteTask,
 }: TodoItemProps) => {
+
     return (
         <div className="w-full flex justify-center gap-4 items-center p-4 bg-white shadow-md rounded-lg mb-4">
             <input

@@ -15,6 +15,8 @@ type FormData = {
     confirmPassword: string;
 };
 
+// SignupForm render component
+// This component is used to render the signup form
 export const SignupForm = ({
     handleSubmit,
     handleChange,

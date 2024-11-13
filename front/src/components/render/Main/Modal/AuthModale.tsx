@@ -10,6 +10,8 @@ interface AuthModalProps {
     setUserNeedSignup: (value: boolean) => void;
 }
 
+// AuthModal render component
+// This component is used to display the modal for login or signup
 export const AuthModal = ({
     userNeedLogin,
     handleClickOnCloseIcon,

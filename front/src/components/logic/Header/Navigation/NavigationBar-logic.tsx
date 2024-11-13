@@ -1,7 +1,13 @@
 import { useAuthModal } from "../../../../context/ModalContext";
 import { useAuth } from "../../../../context/userIsConnected";
+
 import { NavigationBar } from "../../../render/Header/Navigation/NavigationBar";
+
+// NavigationBar logic component
+// This component is the logic part of the navigation bar
 export const NavigationBarLogic = () => {
+
+    // useContext from ModalContext for handling the modal
     const {
         openModal,
         userNeedLogin,
@@ -11,7 +17,9 @@ export const NavigationBarLogic = () => {
         setOpenModal,
     } = useAuthModal();
 
+    // useContext from userIsConnected for checking if user is connected
     const {userIsConnected, handleDisconnectUser} = useAuth();
+
     return (
         <NavigationBar
             openModal={openModal}
