@@ -67,5 +67,3 @@ Project/
 │       ├── tsconfig.json                    # Typescript configuration file
 │       ├── tailwind.config.js               # Tailwind CSS configuration file
 │       └── vite.config.ts                   # Vite configuration file
-│
-└── .gitignore                               # Git ignore file
