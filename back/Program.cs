@@ -12,11 +12,11 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowAll", policy =>
     {
         // Permet toutes les origines (domaine, sous-domaine, etc.)
-        policy.AllowAnyOrigin() 
+        policy.AllowAnyOrigin()
               // Permet toutes les méthodes HTTP (GET, POST, PUT, DELETE, etc.)
-              .AllowAnyMethod() 
+              .AllowAnyMethod()
               // Permet tous les en-têtes HTTP
-              .AllowAnyHeader(); 
+              .AllowAnyHeader();
     });
 });
 
@@ -50,7 +50,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 // Configuration de Swagger pour générer la documentation des API
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.EnableAnnotations();  // Activer les annotations Swagger
+});
 
 // Ajouter le service d'autorisation (permet d'appliquer des règles d'accès aux API)
 builder.Services.AddAuthorization();
@@ -75,7 +78,13 @@ if (app.Environment.IsDevelopment())
 {
     // Activer Swagger pour générer la documentation de l'API
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(
+        c =>
+        {
+            c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API v1");
+            c.RoutePrefix = string.Empty;
+        });
+
 }
 
 // Mapping des contrôleurs pour gérer les endpoints d'API

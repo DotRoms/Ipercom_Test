@@ -4,6 +4,7 @@ using MonProjetAPI_CRUD.Models;
 using MonProjetAPI.Models;
 using MonProjetAPI.Data;
 using System.IdentityModel.Tokens.Jwt;
+using Swashbuckle.AspNetCore.Annotations;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -29,6 +30,10 @@ namespace MonProjetAPI_CRUD.Controllers
         }
 
         [HttpGet]
+          [SwaggerOperation(
+            Summary = "Get all tasks for a user",
+            Description = "Retrieve all tasks for a specific user. Requires the user ID as a query parameter. "
+        )]
         public async Task<ActionResult<IEnumerable<UserTask>>> GetUserTasks([FromQuery] int userId)
         {
             try
@@ -54,6 +59,10 @@ namespace MonProjetAPI_CRUD.Controllers
 
 
         [HttpPost("add")]
+             [SwaggerOperation(
+            Summary = "Add a new task for a user",
+            Description = "Add a new task for a specific user. Requires the user ID and the task title as parameters."
+        )]
         public async Task<ActionResult<UserTask>> AddTask(CreateTask task)
         {
             if (task == null)

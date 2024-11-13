@@ -6,8 +6,10 @@ using MonProjetAPI.Data;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
+using Swashbuckle.AspNetCore.Annotations;
 using System.Text;
 using BCrypt.Net;
+
 namespace MonProjetAPI_CRUD.Controllers
 {
     [Route("api/[controller]")]
@@ -29,6 +31,10 @@ namespace MonProjetAPI_CRUD.Controllers
 
         // Récupérer tous les utilisateurs
         [HttpGet]
+          [SwaggerOperation(
+            Summary = "Get all users",
+            Description = "Retrieve all users from the database."
+        )]
         public async Task<ActionResult<IEnumerable<User>>> GetUser()
         {
             // Utilisation de Entity Framework pour récupérer tous les utilisateurs
@@ -39,6 +45,10 @@ namespace MonProjetAPI_CRUD.Controllers
 
         // Ajouter un nouvel utilisateur
         [HttpPost("signup")]
+          [SwaggerOperation(
+            Summary = "Create a new user",
+            Description = "Create a new user in the database."
+        )]
         public async Task<ActionResult<User>> CreateUser(SignupRequest user)
         {
 
@@ -68,6 +78,10 @@ namespace MonProjetAPI_CRUD.Controllers
 
         // Authentifier l'utilisateur
         [HttpPost("login")]
+          [SwaggerOperation(
+            Summary = "Authenticate a user",
+            Description = "Authenticate a user in the database."
+        )]
         public async Task<IActionResult> Login(LoginRequest loginUser)
         {
 
