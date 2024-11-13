@@ -1,4 +1,5 @@
-// import { ApiService } from "../services/apiServices";
+import { VerifyIfUserExistWithToken } from "../actions/VerifyIfUserExistWhitToken";
+import { ApiService } from "../services/apiServices";
 
 interface TodoItemProps {
     id: string;
@@ -11,7 +12,6 @@ export const updateTask = (
     todoList: TodoItemProps[],
     setTodoList: (todos: TodoItemProps[]) => void
 ) => {
-
     const toggleTask = async (id: string) => {
         const updatedTodos = todoList.map((todo) =>
             todo.id === id ? { ...todo, completed: !todo.completed } : todo
@@ -34,21 +34,25 @@ export const updateTask = (
     return { toggleTask };
 };
 
+export const deleteTask = (taskId: number) => {
+    
+    const handleDeleteTask = async () => {
+        
+        const userId = await VerifyIfUserExistWithToken();
 
-export const deleteTask = (
-    todoList: TodoItemProps[],
-    setTodoList: (todos: TodoItemProps[]) => void
-) => {
-    const handleDeleteTask = async (id: string) => {
-        const updatedTodos = todoList.filter((todo) => todo.id !== id);
-        setTodoList(updatedTodos);
+        // Si l'utilisateur ou la tâche n'existe pas, on ne tente pas de supprimer
+        if (!userId || !taskId) {
+            console.error("User or Task ID is missing");
+            return;
+        }
 
-        // try {
-        //     await ApiService.delete(`${endpoint}/${id}`);
-        // } catch (error) {
-        //     console.error("Error deleting task in DB:", error);
-        //     setTodoList(todoList);
-        // }
+        try {
+            // Passer les identifiants via l'URL (recommandation pour une requête DELETE)
+            const response = await ApiService.delete(`/Task/delete?userId=${userId}&taskId=${taskId}`);
+           return response;
+        } catch (error) {
+            console.error("Error deleting task in DB:", error);
+        }
     };
 
     return { handleDeleteTask };

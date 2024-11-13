@@ -5,7 +5,7 @@ interface TodoItemProps {
     title: string;
     completed: boolean;
     // onToggle: (id: string) => void;
-    // handleDeleteTask: (id: string) => void;
+    handleDeleteTask: (id: string) => void;
 }
 
 // TodoCard render component
@@ -15,7 +15,7 @@ export const TodoCard = ({
     title,
     completed,
     // onToggle,
-    // handleDeleteTask,
+    handleDeleteTask,
 }: TodoItemProps) => {
 
     return (
@@ -35,8 +35,7 @@ export const TodoCard = ({
             </p>
 
             <div className="flex">
-                {/* <button onClick={() => handleDeleteTask(id)}> */}
-                <button>
+                <button onClick={() => handleDeleteTask(`${id}`)}>
                     <DeleteIcon size="25" color="red" />
                 </button>
             </div>

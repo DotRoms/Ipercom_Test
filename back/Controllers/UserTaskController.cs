@@ -30,7 +30,7 @@ namespace MonProjetAPI_CRUD.Controllers
         }
 
         [HttpGet]
-          [SwaggerOperation(
+        [SwaggerOperation(
             Summary = "Get all tasks for a user",
             Description = "Retrieve all tasks for a specific user. Requires the user ID as a query parameter. "
         )]
@@ -59,7 +59,7 @@ namespace MonProjetAPI_CRUD.Controllers
 
 
         [HttpPost("add")]
-             [SwaggerOperation(
+        [SwaggerOperation(
             Summary = "Add a new task for a user",
             Description = "Add a new task for a specific user. Requires the user ID and the task title as parameters."
         )]
@@ -104,5 +104,46 @@ namespace MonProjetAPI_CRUD.Controllers
                 return StatusCode(500, new { message = "Une erreur est survenue lors de l'ajout de la tâche.", details = ex.Message });
             }
         }
+
+        [HttpDelete("delete")]
+        [SwaggerOperation(
+            Summary = "Delete a task for a user",
+            Description = "Update the status of a task. Requires the task ID and the new status as parameters."
+        )]
+        public async Task<ActionResult> DeleteTask([FromQuery] int userId, [FromQuery] int taskId)
+        {
+           
+            if (userId == 0 || taskId == 0)
+            {
+                return BadRequest(new { message = "Les données de l'utilisateur ou de la tâche sont manquantes." });
+            }
+
+            try
+            {
+                // Chercher la tâche à supprimer avec les paramètres userId et taskId
+                var existingTask = await _context.UserTasks
+                    .FirstOrDefaultAsync(t => t.UserId == userId && t.Id == taskId);
+
+                // Si la tâche n'est pas trouvée
+                if (existingTask == null)
+                {
+                    return NotFound(new { message = "Tâche non trouvée." });
+                }
+
+                // Supprimer la tâche trouvée
+                _context.UserTasks.Remove(existingTask);
+                await _context.SaveChangesAsync();
+
+                // Retourner un message de succès
+                return Ok(new { message = "Tâche supprimée avec succès." });
+            }
+            catch (Exception ex)
+            {
+                // Retourner une erreur en cas d'exception
+                return StatusCode(500, new { message = "Une erreur est survenue lors de la suppression de la tâche.", details = ex.Message });
+            }
+        }
+
     }
+
 }

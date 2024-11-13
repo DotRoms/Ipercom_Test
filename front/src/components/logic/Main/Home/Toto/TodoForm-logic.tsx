@@ -23,7 +23,7 @@ export const TodoFormLogic = ({setTodoList}:TodoFormLogicProps ) => {
     const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         const newTask = await handleSubmit(e); // handleSubmit should return the new task
         if (newTask) {
-            setTodoList((prevTodoList) => [...prevTodoList, newTask]); // Mise à jour de la liste
+            setTodoList((prevTodoList) => [...prevTodoList, newTask]); // Update the state with the new task
         }
     };
     

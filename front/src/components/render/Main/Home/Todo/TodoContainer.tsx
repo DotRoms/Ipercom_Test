@@ -7,7 +7,7 @@ type TodoItemProps = {
     id: number;
     title: string;
     completed: boolean;
-}
+};
 
 interface TodoContainerProps {
     todoList: TodoItemProps[];
@@ -24,7 +24,6 @@ export const TodoContainer = ({
     loading,
     setTodoList,
 }: TodoContainerProps) => {
-
     if (loading) {
         return (
             <Container>
@@ -45,13 +44,14 @@ export const TodoContainer = ({
         <Container>
             <h3 className="text-center mb-8 text-2xl">Ma liste de tâches.</h3>
 
-            <TodoFormLogic setTodoList={setTodoList}/>
+            <TodoFormLogic setTodoList={setTodoList} />
 
             <div className="flex flex-col w-full">
                 {todoList.map((todo: TodoItemProps, index: number) => (
                     <TodoCardLogic
                         key={index}
                         todo={todo}
+                        setTodoList={setTodoList}
                     />
                 ))}
             </div>

@@ -11,4 +11,5 @@ namespace MonProjetAPI_CRUD.Models
     {
         public int UserId { get; set; }
     }
+
 }

@@ -1,22 +1,37 @@
-// import { deleteTask, updateTask } from "../../../../../actions/TaskCrud";
-
+import { deleteTask } from "../../../../../actions/TaskCrud";
 import { TodoCard } from "../../../../render/Main/Home/Todo/TodoCard";
 
-type TodoProps = {
+// Importer le type TodoItemProps si nécessaire
+type TodoItemProps = {
     id: number;
     title: string;
     completed: boolean;
-}
+};
 
 interface TodoCardProps {
-    todo: TodoProps;
+    todo: TodoItemProps;
+    setTodoList: React.Dispatch<React.SetStateAction<TodoItemProps[]>>;
 }
 
-// TodoCardLogic logic component
-// This component is used to manage the logic of the TodoCard component
-export const TodoCardLogic = ({ todo }: TodoCardProps) => {
+export const TodoCardLogic = ({ todo, setTodoList }: TodoCardProps) => {
+    const { id, title, completed } = todo;
 
-    const { id, title, completed } = todo; // Destructuring the todo object
+    // Fonction pour gérer la suppression
+    const { handleDeleteTask } = deleteTask(id);
 
-    return <TodoCard id={id} title={title} completed={completed} />;
+    const onDeleteClick = async () => {
+        await handleDeleteTask(); // Delete task in DB
+
+        // Udapte state after deletion
+        setTodoList((prevTodoList) => prevTodoList.filter((task) => task.id !== id));
+    };
+
+    return (
+        <TodoCard
+            id={id}
+            title={title}
+            completed={completed}
+            handleDeleteTask={onDeleteClick}
+        />
+    );
 };
