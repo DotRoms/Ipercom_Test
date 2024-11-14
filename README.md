@@ -30,14 +30,14 @@ Retrouvez l'architeture du projet ici `/conception/Architecture.md`.
     Depuis la racine du projet, naviguez vers le dossier "front" et installez les dépendances :
 
     ```bash
-    cd client
-    npm install
+    $ cd client
+    $ npm install
     ```
 
 2. **Pour lancer le Client front-end en mode développement :**
 
     ```bash
-    npm run dev
+    $ npm run dev
     ```
 
 3. **Installer les dépendances back-end** :
@@ -45,14 +45,37 @@ Retrouvez l'architeture du projet ici `/conception/Architecture.md`.
     Depuis la racine du projet, naviguez vers le dossier "back" et installez les packages :
 
     ```bash
-    cd back
-    dotnet restore
+    $ cd back
+    $ dotnet restore
     ```
 
-4. **Pour lancer le Backend en mode développement :**
+4. **Pour utiliser l'application vous devez créer une base de donnée. L'application est configurer pour Postgresql, si vous souhaitez modifier la BDD veuillez renseigner les information suivantes dans le fichier `appsettings.json`:**
+
+
+
+    ```bash"ConnectionStrings": {
+        "DefaultConnection": "Host=localhost;Port=votrePort;Database=nomDeVotreDB;Username=votreUserName;Password=votrePassword"
+    },
+    ```
+
+    Vous devrez ensuite modifier le fichier  `Program.cs` pour ajouter la ligne suivante. Dans notre cas avec Postgresql :
 
     ```bash
-    dotnet build
-    dotnet run
+    builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+    ```
+
+    Enfin vous pouvez lancer la migration pour créer la base de donnée :
+
+    ```bash
+    $ dotnet ef migrations add initialMigration
+    $ dotnet ef database update
+    ```
+
+5. **Pour lancer le Backend en mode développement :**
+
+    ```bash
+    $ dotnet build
+    $ dotnet run
     ```
 

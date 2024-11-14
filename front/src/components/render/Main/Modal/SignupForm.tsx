@@ -32,7 +32,7 @@ export const SignupForm = ({
             className="flex flex-col gap-6 p-6"
         >
             <div className="flex flex-col gap-2">
-                <label htmlFor="">Name</label>
+                <label htmlFor="">Votre pseudo :</label>
                 <input
                     type="text"
                     required
@@ -44,7 +44,7 @@ export const SignupForm = ({
             </div>
 
             <div className="flex flex-col gap-2">
-                <label htmlFor="">Email :</label>
+                <label htmlFor="">Votre email :</label>
                 <input
                     type="email"
                     required
@@ -56,7 +56,7 @@ export const SignupForm = ({
             </div>
 
             <div className="flex flex-col gap-2">
-                <label htmlFor="">Mot de passe :</label>
+                <label htmlFor="">Votre mot de passe :</label>
                 <input
                     type="password"
                     required
@@ -67,7 +67,7 @@ export const SignupForm = ({
                 />
             </div>
             <div className="flex flex-col gap-2">
-                <label htmlFor="">Confirmation :</label>
+                <label htmlFor="">Confirmation de votre mot de passe :</label>
                 <input
                     type="password"
                     required

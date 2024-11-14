@@ -38,6 +38,7 @@ export const useSignupModal = () => {
                     name: formData.name,
                     email: formData.email,
                     password: formData.password,
+                    confirmPassword: formData.confirmPassword,
                 };
 
                 const response = await ApiService.post("/User/signup", data);

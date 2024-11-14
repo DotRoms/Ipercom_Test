@@ -74,7 +74,7 @@ namespace MonProjetAPI_CRUD.Controllers
             {
                 // Vérifier si l'utilisateur possède déjà une tâche avec le même titre
                 var existingTask = await _context.UserTasks
-                    .FirstOrDefaultAsync(t => t.UserId == task.UserId && t.Title == task.Title);
+                    .FirstOrDefaultAsync(t => t.UserId == task.userId && t.Title == task.title);
 
                 // Si une tâche avec le même titre existe déjà pour cet utilisateur
                 if (existingTask != null)
@@ -85,8 +85,8 @@ namespace MonProjetAPI_CRUD.Controllers
                 // Créer une nouvelle tâche
                 var newTask = new UserTask
                 {
-                    Title = task.Title,
-                    UserId = task.UserId,
+                    Title = task.title,
+                    UserId = task.userId,
                     Completed = false,
                     CreatedAt = DateTime.UtcNow
                 };
@@ -112,7 +112,7 @@ namespace MonProjetAPI_CRUD.Controllers
         )]
         public async Task<ActionResult> DeleteTask([FromQuery] int userId, [FromQuery] int taskId)
         {
-           
+
             if (userId == 0 || taskId == 0)
             {
                 return BadRequest(new { message = "Les données de l'utilisateur ou de la tâche sont manquantes." });
@@ -141,6 +141,41 @@ namespace MonProjetAPI_CRUD.Controllers
             {
                 // Retourner une erreur en cas d'exception
                 return StatusCode(500, new { message = "Une erreur est survenue lors de la suppression de la tâche.", details = ex.Message });
+            }
+        }
+
+        [HttpPut("update")]
+        [SwaggerOperation(
+            Summary = "Update the status of a task",
+            Description = "Update the status of a task. Requires the task ID and the new status as parameters."
+        )]
+        public async Task<ActionResult> UpdateTask(UpdateTask task)
+
+        {
+            if (task == null)
+            {
+                return BadRequest(new { message = "Les données de la tâche sont manquantes." });
+            }
+
+
+            try
+            {
+                var existingTask = await _context.UserTasks.FirstOrDefaultAsync(t => t.UserId == task.userId && t.Id == task.taskId);
+                if (existingTask == null)
+                {
+                    return NotFound(new { message = "Tâche non trouvée." });
+                }
+
+                existingTask.Completed = !existingTask.Completed;
+
+                _context.Entry(existingTask).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
+                return Ok(new { id = existingTask.Id, title = existingTask.Title, completed = existingTask.Completed });
+            }
+            catch (Exception ex)
+            {
+                // Retourner une erreur en cas d'exception
+                return StatusCode(500, new { message = "Une erreur est survenue lors de la mise à jour de la tâche.", details = ex.Message });
             }
         }
 

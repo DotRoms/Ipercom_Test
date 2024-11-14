@@ -22,7 +22,7 @@ export const TodoForm = ({
     successMessage,
 }: TodoFormProps) => {
     return (
-        <div className="flex flex-col gap-2 border border-secondary p-4 rounded-lg mb-8">
+        <div className="flex flex-col border border-secondary p-4 rounded-lg mb-8">
             <form
                 action=""
                 className="flex items-center gap-4 "
@@ -42,10 +42,10 @@ export const TodoForm = ({
             </form>
             <div className="text-sm text-center">
                 {errorMessages[0] && (
-                    <p className="text-red-500">{errorMessages[0]}</p>
+                    <p className="text-red-500 mt-4">{errorMessages[0]}</p>
                 )}
                 {successMessage && (
-                    <p className="text-green-500">{successMessage}</p>
+                    <p className="text-green-500 mt-4">{successMessage}</p>
                 )}
             </div>
         </div>

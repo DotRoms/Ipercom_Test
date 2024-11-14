@@ -31,7 +31,7 @@ export const LoginForm = ({
             onSubmit={handleSubmit}
         >
             <div className="flex flex-col gap-2">
-                <label htmlFor="">Email :</label>
+                <label htmlFor="">Votre email :</label>
                 <input
                     type="email"
                     required
@@ -43,7 +43,7 @@ export const LoginForm = ({
             </div>
 
             <div className="flex flex-col gap-2">
-                <label htmlFor="">Mot de passe :</label>
+                <label htmlFor="">Votre mot de passe :</label>
                 <input
                     type="password"
                     required

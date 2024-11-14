@@ -1,15 +1,31 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace MonProjetAPI_CRUD.Models
 {
     public class CreateTask
     {
-        public int UserId { get; set; }
-        public string Title { get; set; }
+        [Required]
+        public int userId { get; set; }
+
+        [Required]
+        public string title { get; set; }
 
     }
 
     public class GetUserTask
     {
-        public int UserId { get; set; }
+        [Required]
+        public int userId { get; set; }
+    }
+
+    public class UpdateTask
+    {
+        [Required]
+        public int userId { get; set; }
+
+        [Required]
+        public int taskId { get; set; }
+
     }
 
 }

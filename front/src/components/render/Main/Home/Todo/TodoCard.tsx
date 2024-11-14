@@ -4,8 +4,8 @@ interface TodoItemProps {
     id: number;
     title: string;
     completed: boolean;
-    // onToggle: (id: string) => void;
-    handleDeleteTask: (id: string) => void;
+    handleUpdateTask: (id: number) => void;
+    handleDeleteTask: (id: number) => void;
 }
 
 // TodoCard render component
@@ -14,7 +14,7 @@ export const TodoCard = ({
     id,
     title,
     completed,
-    // onToggle,
+    handleUpdateTask,
     handleDeleteTask,
 }: TodoItemProps) => {
 
@@ -24,7 +24,7 @@ export const TodoCard = ({
                 type="checkbox"
                 id={`${id}`}
                 checked={completed}
-                // onChange={() => onToggle(id)}
+                onChange={() => handleUpdateTask(id)}
             />
             <p
                 className={`flex-1 ${
@@ -35,7 +35,7 @@ export const TodoCard = ({
             </p>
 
             <div className="flex">
-                <button onClick={() => handleDeleteTask(`${id}`)}>
+                <button onClick={() => handleDeleteTask(id)}>
                     <DeleteIcon size="25" color="red" />
                 </button>
             </div>
