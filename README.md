@@ -18,6 +18,9 @@ Avant de lancer le projet, assurez-vous d'avoir installé :
 -   **Back-end** : API en `C#` avec `.NET` et `Entity Framework Core`
     -   Situé dans le dossier `/back`.
     -   Utilise Entity Framework Core pour les opérations de base de données.
+-   **Base de données** : `Postgresql`
+    -   Vous pouvez modifier la base de données dans le fichier `appsettings.json`.
+
 
 Retrouvez l'architeture du projet ici `/conception/Architecture.md`.
 
