@@ -82,3 +82,37 @@ Retrouvez l'architeture du projet ici `/conception/Architecture.md`.
     $ dotnet run
     ```
 
+## Choix technologiques
+
+### Front-end
+
+-   **React** : Bibliothèque JavaScript pour la création d'interfaces utilisateur.
+-   **TypeScript** : Langage de programmation fortement typé et open-source développé par Microsoft.
+- **TailwindCSS** : Framework CSS pour la création de design moderne. Rapide a mettre en place et facile à utiliser. L'utilisation de TailwindCSS permet de créer des composants réutilisables et de gagner du temps dans le développement.
+- **zod** : Bibliothèque de validation de schémas TypeScript. Elle permet de valider les données entrantes et de garantir que les données sont correctes avant de les utiliser. Permet de réduire considérablement les failles de sécurité.
+- **JWToken** : Pour l'authentification et la sécurisation des routes. Permet de vérifier a l'aide d'un token générer par le backend si l'utilisateur est bien authentifié.
+- **Eslint** : Pour le respect des normes de codage.
+- **Vite** : Pour le lancement rapide de l'application.
+
+### Back-end
+
+-   **C#** : Langage de programmation orienté objet développé par Microsoft. Utilisé pour le développement de l'API.
+-   **.NET** : Plateforme de développement logiciel pour construire des applications plus rapidement. 
+-   **Entity Framework Core** : Outil de mapping objet-relationnel (ORM) open source développé par Microsoft. Permet de simplifier l'accès aux bases de données.
+-   **Postgresql** : Système de gestion de base de données relationnelle open source. Permet de stocker les données de l'application.
+-   **JWT** : Pour l'authentification et la sécurisation des routes. Permet de vérifier a l'aide d'un token générer par le backend si l'utilisateur est bien authentifié.
+-   **Swagger** : Pour la documentation de l'API.
+- **Bcrypt** : Pour le hashage des mots de passe. Permet de sécuriser les mots de passe des utilisateurs.
+
+### Tests
+
+- **XUnit** : Framework de test pour .NET. Utilisé pour les tests unitaires.
+- **Moq** : Bibliothèque de mock pour .NET. Utilisé pour les tests unitaires. Permet de simuler des objets et de tester les interactions entre les objets.
+- **FluentAssertions** : Une bibliothèque pour écrire des assertions claires, lisibles et expressives dans les tests. Elle améliore la lisibilité et la maintenabilité des tests unitaires.
+- **Microsoft.EntityFrameworkCore.InMemory :** Pour les tests unitaires. Permet de simuler une base de données en mémoire temporaire pour les tests.
+
+## Autres
+
+Ce projet est un exemple d'application monolithique. Il est possible de le découper en microservices pour une architecture plus évolutive et scalable. Pour cela, il faudra découper l'application en plusieurs services. 
+
+Ce projet est un test technique réalisé dans le cadre d'une candidature pour un poste de développeur Fullstack.
